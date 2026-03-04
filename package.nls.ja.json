@@ -1,0 +1,15 @@
+{
+  "extension.displayName": "Cmd Hub",
+  "extension.description": "フォルダ階層でコマンドを管理し、ターミナルで実行できるVSCode拡張機能です。",
+  "view.title": "Cmd Hub",
+  "view.name": "Cmd Hub",
+
+  "command.addCommand": "コマンドを追加",
+  "command.addFolder": "フォルダを追加",
+  "command.run": "コマンドを実行",
+  "command.setToTerminal": "ターミナルにセット",
+  "command.edit": "編集",
+  "command.delete": "削除",
+  "command.reload": "最新の情報に更新",
+  "command.openStorage": "コマンド一覧を編集"
+}
