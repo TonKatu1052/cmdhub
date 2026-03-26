@@ -8,7 +8,9 @@
   "engines": {
     "vscode": "^1.109.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "keywords": [
     "command",
     "terminal",
@@ -16,7 +18,7 @@
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
-  "icon": "resources/image/icon.png",
+  "icon": "images/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/TonKatu1052/cmdhub.git"
@@ -193,12 +195,14 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "compile": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts",
+    "pretest": "npm run lint && npm run compile",
+    "watch": "tsc -watch",
     "test": "vscode-test",
-    "package": "vsce package",
-    "publish": "vsce publish"
+    "package": "npx vsce package",
+    "vscode:prepublish": "npm run compile"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -208,7 +212,7 @@
     "@typescript-eslint/parser": "^8.17.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.16.0",
+    "eslint": "^8.57.1",
     "typescript": "^5.7.2"
   }
 }

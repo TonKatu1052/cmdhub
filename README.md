@@ -3,7 +3,7 @@
 **CmdHub** は VSCode 内でコマンドを管理・実行できる拡張機能です。  
 フォルダ階層でコマンドを整理でき、ワンクリックでコマンドを実行できます。
 
-![CmdHub demo](https://raw.githubusercontent.com/TonKatu1052/cmdhub/main/resources/image/demo.gif)
+![CmdHub demo](https://raw.githubusercontent.com/TonKatu1052/cmdhub/main/images/demo.gif)
 
 ## 特徴
 
