@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import { Storage } from './storage';
 import { CmdHubDragAndDrop, CmdHubTreeProvider } from './tree';
-import { CommandNode } from './types';
+import { CommandNode, TerminalType } from './types';
 import { addNode, createNode, removeNodeById, replaceNodeInTree } from './utility';
+import { Terminal } from './terminal';
 
 export function activate(context: vscode.ExtensionContext) {
   const storage = new Storage(context);
@@ -20,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   context.subscriptions.push(
-    
+
     vscode.commands.registerCommand('cmdhub.addCommand', async (targetNode?: CommandNode) => {
       addCommand(targetNode);
     }),
@@ -57,6 +58,29 @@ export function activate(context: vscode.ExtensionContext) {
       provider.refresh();
     }),
 
+    vscode.commands.registerCommand('cmdhub.editTerminalType', async (targetNode?: CommandNode) => {
+      if (!targetNode) { return; }
+
+      const selected = await vscode.window.showQuickPick([
+        { label: 'Default', value: undefined, description: '' },
+        { label: 'cmd', value: 'cmd', description: 'Windows の cmd.exe' },
+        { label: 'powershell', value: 'powershell', description: 'PowerShell' },
+        { label: 'bash', value: 'bash', description: 'bash / WSL / Git Bash など' }
+      ], {
+        title: '使用するターミナルを選択',
+        placeHolder: 'どのターミナルでコマンドを実行しますか？',
+      });
+
+      if (!selected) { return; }
+      
+      targetNode.terminalType = selected.value
+        ? selected.value as TerminalType
+        : undefined;
+
+      await storage.write(replaceNodeInTree(await storage.read(), targetNode));
+      provider.refresh();
+    }),
+
     vscode.commands.registerCommand('cmdhub.delete', async (targetNode?: CommandNode) => {
       if (!targetNode) { return; }
 
@@ -71,18 +95,12 @@ export function activate(context: vscode.ExtensionContext) {
 
     vscode.commands.registerCommand('cmdhub.run', async (targetNode?: CommandNode) => {
       if (!targetNode || targetNode.type !== 'command') { return; }
-      const terminal = vscode.window.activeTerminal ?? vscode.window.createTerminal('CmdHub');
-
-      terminal.show();
-      terminal.sendText(targetNode.command ?? '');
+      Terminal.runCommand(targetNode);
     }),
 
     vscode.commands.registerCommand('cmdhub.setToTerminal', async (targetNode?: CommandNode) => {
       if (!targetNode || targetNode.type !== 'command') { return; }
-      const terminal = vscode.window.activeTerminal ?? vscode.window.createTerminal('CmdHub');
-
-      terminal.show();
-      terminal.sendText(targetNode.command ?? '', false);
+      Terminal.setToTerminal(targetNode);
     }),
 
     vscode.commands.registerCommand('cmdhub.openStorage', async () => {
