@@ -22,6 +22,26 @@
     "url": "https://github.com/TonKatu1052/cmdhub.git"
   },
   "contributes": {
+    "configuration": {
+      "title": "CmdHub",
+      "properties": {
+        "cmdhub.shellPaths.cmd": {
+          "type": "string",
+          "default": "C:/Windows/System32/cmd.exe",
+          "description": "cmd の shellPath"
+        },
+        "cmdhub.shellPaths.powershell": {
+          "type": "string",
+          "default": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "description": "Windows PowerShell の shellPath"
+        },
+        "cmdhub.shellPaths.bash": {
+          "type": "string",
+          "default": "C:/Program Files/Git/bin/bash.exe",
+          "description": "bash の shellPath"
+        }
+      }
+    },
     "views": {
       "explorer": [
         {
@@ -54,6 +74,10 @@
       {
         "command": "cmdhub.edit",
         "title": "%command.edit%"
+      },
+      {
+        "command": "cmdhub.editTerminalType",
+        "title": "%command.editTerminalType%"
       },
       {
         "command": "cmdhub.delete",
@@ -108,9 +132,14 @@
           "group": "navigation@3"
         },
         {
+          "command": "cmdhub.editTerminalType",
+          "when": "view == cmdhub.tree && viewItem == command",
+          "group": "navigation@4"
+        },
+        {
           "command": "cmdhub.delete",
           "when": "view == cmdhub.tree",
-          "group": "navigation@4"
+          "group": "navigation@5"
         }
       ],
       "view/title": [

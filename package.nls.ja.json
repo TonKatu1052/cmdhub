@@ -9,6 +9,7 @@
   "command.run": "コマンドを実行",
   "command.setToTerminal": "ターミナルにセット",
   "command.edit": "編集",
+  "command.editTerminalType": "ターミナルを選択",
   "command.delete": "削除",
   "command.reload": "最新の情報に更新",
   "command.openStorage": "コマンド一覧を編集"

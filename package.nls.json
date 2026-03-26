@@ -9,6 +9,7 @@
   "command.run": "Run Command",
   "command.setToTerminal": "Set To Terminal",
   "command.edit": "Edit",
+  "command.editTerminalType": "Edit Terminal Type",
   "command.delete": "Delete",
   "command.reload": "Reload",
   "command.openStorage": "Edit Commands"
