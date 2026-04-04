@@ -1,0 +1,243 @@
+{
+  "name": "cmdhub",
+  "displayName": "%extension.displayName%",
+  "description": "%extension.description%",
+  "version": "0.2.0",
+  "publisher": "tonkatu1052",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "command",
+    "terminal",
+    "command manager"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TonKatu1052/cmdhub.git"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "CmdHub",
+      "properties": {
+        "cmdhub.shellPaths.cmd": {
+          "type": "string",
+          "default": "C:/Windows/System32/cmd.exe",
+          "description": "cmd の shellPath"
+        },
+        "cmdhub.shellPaths.powershell": {
+          "type": "string",
+          "default": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "description": "Windows PowerShell の shellPath"
+        },
+        "cmdhub.shellPaths.bash": {
+          "type": "string",
+          "default": "C:/Program Files/Git/bin/bash.exe",
+          "description": "bash の shellPath"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "cmdhub.shortcutRun",
+        "key": "ctrl+alt+a"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "cmdhub.tree",
+          "name": "%view.name%",
+          "icon": "$(terminal)",
+          "contextualTitle": "%view.title%"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "cmdhub.addCommand",
+        "title": "%command.addCommand%"
+      },
+      {
+        "command": "cmdhub.addCommandFromToolbar",
+        "title": "%command.addCommand%",
+        "icon": "$(add)"
+      },
+      {
+        "command": "cmdhub.addFolder",
+        "title": "%command.addFolder%"
+      },
+      {
+        "command": "cmdhub.addFolderFromToolbar",
+        "title": "%command.addFolder%",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "cmdhub.edit",
+        "title": "%command.edit%"
+      },
+      {
+        "command": "cmdhub.editTerminalType",
+        "title": "%command.editTerminalType%"
+      },
+      {
+        "command": "cmdhub.editShortcut",
+        "title": "%command.editShortcut%"
+      },
+      {
+        "command": "cmdhub.delete",
+        "title": "%command.delete%"
+      },
+      {
+        "command": "cmdhub.run",
+        "title": "%command.run%",
+        "icon": "$(play)"
+      },
+      {
+        "command": "cmdhub.setToTerminal",
+        "title": "%command.setToTerminal%",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "cmdhub.runFolder",
+        "title": "%command.runFolder%",
+        "icon": "$(play)"
+      },
+      {
+        "command": "cmdhub.openStorage",
+        "title": "%command.openStorage%",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "cmdhub.reload",
+        "title": "%command.reload%",
+        "icon": "$(refresh)"
+      }
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "cmdhub.run",
+          "when": "view == cmdhub.tree && viewItem == command",
+          "group": "inline"
+        },
+        {
+          "command": "cmdhub.setToTerminal",
+          "when": "view == cmdhub.tree && viewItem == command",
+          "group": "inline"
+        },
+        {
+          "command": "cmdhub.runFolder",
+          "when": "view == cmdhub.tree && viewItem == folder",
+          "group": "inline"
+        },
+        {
+          "command": "cmdhub.addCommand",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@1"
+        },
+        {
+          "command": "cmdhub.addFolder",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@2"
+        },
+        {
+          "command": "cmdhub.edit",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@3"
+        },
+        {
+          "command": "cmdhub.editTerminalType",
+          "when": "view == cmdhub.tree && viewItem == command",
+          "group": "navigation@4"
+        },
+        {
+          "command": "cmdhub.editShortcut",
+          "when": "view == cmdhub.tree && viewItem == command",
+          "group": "navigation@5"
+        },
+        {
+          "command": "cmdhub.delete",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@6"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "cmdhub.addCommandFromToolbar",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@1"
+        },
+        {
+          "command": "cmdhub.addFolderFromToolbar",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@2"
+        },
+        {
+          "command": "cmdhub.reload",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@3"
+        },
+        {
+          "command": "cmdhub.openStorage",
+          "when": "view == cmdhub.tree",
+          "group": "navigation@4"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "cmdhub.addCommand",
+          "when": "false"
+        },
+        {
+          "command": "cmdhub.addFolder",
+          "when": "false"
+        },
+        {
+          "command": "cmdhub.run",
+          "when": "false"
+        },
+        {
+          "command": "cmdhub.setToTerminal",
+          "when": "false"
+        },
+        {
+          "command": "cmdhub.edit",
+          "when": "false"
+        },
+        {
+          "command": "cmdhub.delete",
+          "when": "false"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts",
+    "pretest": "npm run lint && npm run compile",
+    "watch": "tsc -watch",
+    "test": "vscode-test",
+    "package": "npx vsce package",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.19.39",
+    "@types/vscode": "1.109",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.58.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^8.57.1",
+    "typescript": "^5.7.2"
+  }
+}

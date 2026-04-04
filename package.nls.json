@@ -1,0 +1,18 @@
+{
+  "extension.displayName": "Cmd Hub",
+  "extension.description": "Hierarchical command manager for VSCode with terminal integration.",
+  "view.title": "Cmd Hub",
+  "view.name": "Cmd Hub",
+
+  "command.addCommand": "Add Command",
+  "command.addFolder": "Add Folder",
+  "command.run": "Run Command",
+  "command.setToTerminal": "Set To Terminal",
+  "command.runFolder": "Run Commands in the Folder",
+  "command.edit": "Edit",
+  "command.editTerminalType": "Edit Terminal Type",
+  "command.editShortcut": "Edit Shortcut",
+  "command.delete": "Delete",
+  "command.reload": "Reload",
+  "command.openStorage": "Edit Commands"
+}
